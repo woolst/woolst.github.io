@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>woolst.com - Empowering Autonomy, Redefining Intelligence</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --neon-purple: #ff00ff;
+            --neon-blue: #00ffff;
+            --neon-green: #00ff00;
+            --neon-yellow: #ffff00;
+            --neon-red: #ff0066;
+        }
+
+        .backdrop {
+            background: radial-gradient(circle at 50% 50%, #0a0a2e 0%, #000510 100%);
+        }
+
+        .neon-tube {
+            filter: drop-shadow(0 0 2px rgba(255,255,255,0.8))
+                   drop-shadow(0 0 4px currentColor)
+                   drop-shadow(0 0 6px currentColor);
+            animation: tubeFlicker 4s infinite;
+        }
+
+        .rainbow-border {
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .rainbow-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                var(--neon-purple),
+                var(--neon-blue),
+                var(--neon-green),
+                var(--neon-yellow),
+                var(--neon-red));
+            border-radius: inherit;
+            z-index: -1;
+            filter: blur(8px);
+            opacity: 0.5;
+            animation: borderGlow 8s linear infinite;
+        }
+
+        @keyframes tubeFlicker {
+            0%, 100% { opacity: 1; stroke-width: 0.4; }
+            3% { opacity: 0.3; stroke-width: 0.3; }
+            6% { opacity: 1; stroke-width: 0.4; }
+            7% { opacity: 0.3; stroke-width: 0.3; }
+            8% { opacity: 1; stroke-width: 0.4; }
+            9% { opacity: 0.3; stroke-width: 0.3; }
+            10% { opacity: 1; stroke-width: 0.4; }
+            89% { opacity: 1; stroke-width: 0.4; }
+            90% { opacity: 0.3; stroke-width: 0.3; }
+            100% { opacity: 1; stroke-width: 0.4; }
+        }
+
+        @keyframes borderGlow {
+            0% { filter: blur(8px) hue-rotate(0deg); }
+            100% { filter: blur(8px) hue-rotate(360deg); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .grid-bg {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .text-shadow-neon {
+            text-shadow: 0 0 5px currentColor,
+                         0 0 10px currentColor,
+                         0 0 20px currentColor;
+        }
+
+        /* Neon text color cycling */
+        .rainbow-text {
+            background: linear-gradient(
+                90deg,
+                var(--neon-purple),
+                var(--neon-blue),
+                var(--neon-green),
+                var(--neon-yellow),
+                var(--neon-red),
+                var(--neon-purple)
+            );
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: rainbow 8s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0% { background-position: 0 0; }
+            100% { background-position: 150% 0; }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .rainbow-border::before {
+                filter: blur(4px);
+            }
+            .text-shadow-neon {
+                text-shadow: 0 0 3px currentColor,
+                             0 0 6px currentColor;
+            }
+        }
+    </style>
+</head>
+<body class="backdrop min-h-screen text-white overflow-x-hidden relative">
+    <!-- Background Grid (fixed) -->
+    <div class="fixed inset-0 z-0 grid-bg opacity-10"></div>
+    
+    <!-- Scrolling Content Container -->
+    <div class="relative min-h-screen">
+        <!-- Neon Frame (scrolls with content) -->
+        <div class="absolute inset-x-0 top-0 z-0">
+            <!-- Top Edge -->
+            <svg class="w-full h-40" viewBox="0 0 100 20" preserveAspectRatio="none">
+                <path d="M0,10 Q25,0 50,10 T100,10" stroke="var(--neon-purple)" fill="none" stroke-width="0.4" class="neon-tube"/>
+                <path d="M0,15 Q25,5 50,15 T100,15" stroke="var(--neon-blue)" fill="none" stroke-width="0.3" class="neon-tube" style="animation-delay: -2s"/>
+            </svg>
+        </div>
+        
+        <!-- Left Edge -->
+        <div class="absolute left-0 top-0 h-full z-0">
+            <svg class="w-20 h-full" viewBox="0 0 20 100" preserveAspectRatio="none">
+                <path d="M10,0 Q0,25 10,50 T10,100" stroke="var(--neon-green)" fill="none" stroke-width="0.4" class="neon-tube" style="animation-delay: -1s"/>
+            </svg>
+        </div>
+
+        <!-- Right Edge -->
+        <div class="absolute right-0 top-0 h-full z-0">
+            <svg class="w-20 h-full" viewBox="0 0 20 100" preserveAspectRatio="none">
+                <path d="M10,0 Q20,25 10,50 T10,100" stroke="var(--neon-red)" fill="none" stroke-width="0.4" class="neon-tube" style="animation-delay: -3s"/>
+            </svg>
+        </div>
+
+    <!-- Main Content with higher z-index -->
+    <div class="relative">
+        <!-- Hero Section -->
+        <header class="container mx-auto px-4 py-20 sm:py-32 text-center">
+            <div class="floating">
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400">woolst</span><span class="text-purple-300">.com</span>
+            </h1>
+            <p class="text-2xl sm:text-3xl lg:text-4xl mb-8 text-blue-200 opacity-90">
+                Empowering Autonomy, Redefining Intelligence
+            </p>
+            </div>
+            <div class="max-w-3xl mx-auto">
+                <p class="text-lg sm:text-xl mb-8 text-gray-300">
+                    Empower your business with cutting-edge agentic AI—harnessing the latest technology and proven workflows.
+                </p>
+                <button onclick="window.location.href='mailto:'+atob('aW5mb0B3b29sc3QuY29t')" class="inline-block px-8 py-4 text-lg font-semibold rounded-lg rainbow-border bg-opacity-20 bg-blue-900 hover:bg-opacity-40 transition-all duration-300">
+                    Contact us
+                </button>
+            </div>
+        </header>
+
+        <!-- About/Value Proposition -->
+        <section class="py-16 sm:py-24 relative overflow-hidden">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-center text-green-300 opacity-90">
+                    Our Mission
+                </h2>
+                <div class="max-w-4xl mx-auto">
+                    <div class="rainbow-border rounded-xl p-6 sm:p-8 bg-opacity-10 bg-blue-900 backdrop-blur-sm">
+                        <p class="text-lg sm:text-xl mb-6 text-gray-300">
+                            At woolst.com, we're pioneering the future of enterprise automation through advanced AI agents. Our mission is to transform how multinational corporations handle complex workflows, making them more efficient, intelligent, and autonomous.
+                        </p>
+                        <p class="text-lg sm:text-xl text-gray-300">
+                            We bridge the gap between cutting-edge AI technology and practical business applications, delivering solutions that drive real business value and competitive advantage.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Overview -->
+        <section class="py-16 sm:py-24">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-center text-red-300 opacity-90">
+                    Our Services
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="rainbow-border rounded-xl p-6 sm:p-8 bg-opacity-10 bg-blue-900 backdrop-blur-sm floating">
+                        <h3 class="text-xl sm:text-2xl font-bold mb-4 text-purple-300">
+                            AI Agent Development
+                        </h3>
+                        <p class="text-gray-300">
+                            Custom-built autonomous agents that streamline operations, enhance decision-making, and automate complex business processes with unprecedented efficiency.
+                        </p>
+                    </div>
+                    <div class="rainbow-border rounded-xl p-6 sm:p-8 bg-opacity-10 bg-blue-900 backdrop-blur-sm floating" style="animation-delay: -3s">
+                        <h3 class="text-xl sm:text-2xl font-bold mb-4 text-yellow-300">
+                            Workflow Automation
+                        </h3>
+                        <p class="text-gray-300">
+                            End-to-end workflow automation solutions that integrate seamlessly with your existing systems, reducing manual intervention and accelerating business processes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <footer class="py-16 sm:py-24">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400">
+                    Get in Touch
+                </h2>
+                <div class="rainbow-border rounded-xl p-6 sm:p-8 max-w-2xl mx-auto bg-opacity-10 bg-blue-900 backdrop-blur-sm">
+                    <p class="text-xl mb-6 text-gray-300">
+                        Ready to transform your business with intelligent automation?
+                    </p>
+                    <button onclick="window.location.href='mailto:'+atob('aW5mb0B3b29sc3QuY29t')" class="text-2xl font-semibold text-blue-300 hover:text-blue-200 transition-colors duration-300">
+                        info@woolst.com
+                    </button>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
