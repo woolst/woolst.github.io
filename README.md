@@ -17,18 +17,3 @@ Custom-built autonomous agents that streamline operations, enhance decision-maki
 
 ### Workflow Automation
 End-to-end workflow automation solutions that integrate seamlessly with your existing systems, reducing manual intervention and accelerating business processes.
-
-## Contact
-
-Ready to transform your business with intelligent automation? Get in touch with us:
-
-- Email: [info@woolst.com](mailto:info@woolst.com)
-
-## Technologies Used
-
-- **HTML**
-- **Tailwind CSS**
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
