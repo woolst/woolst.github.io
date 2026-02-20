@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>woolst - AI Automation Consultancy</title>
+    <title>woolst - AI Advocacy for the Modern Workforce</title>
+    <script>
+        if (location.protocol === 'http:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+            location.replace('https:' + location.href.substring(location.protocol.length));
+        }
+    </script>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after {
             margin: 0;
@@ -15,13 +21,14 @@
         }
 
         :root {
-            --text: #1c1917;
-            --text-secondary: #57534e;
-            --bg: #fafaf9;
-            --bg-card: #ffffff;
-            --border: #e7e5e4;
-            --accent: #2563eb;
-            --accent-hover: #1d4ed8;
+            --text: #f5f5f4;
+            --text-secondary: #a8a29e;
+            --bg: #0a0a0a;
+            --bg-card: #141414;
+            --border: #262626;
+            --accent: #ea580c;
+            --accent-light: #f97316;
+            --accent-hover: #fb923c;
         }
 
         body {
@@ -33,7 +40,7 @@
         }
 
         .container {
-            max-width: 720px;
+            max-width: 760px;
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -52,16 +59,16 @@
 
         .logo {
             font-size: 1.125rem;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--text);
             text-decoration: none;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
         }
 
         .nav-contact {
             font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--accent);
+            font-weight: 600;
+            color: var(--accent-light);
             text-decoration: none;
             transition: color 0.15s;
         }
@@ -72,28 +79,41 @@
 
         /* Hero */
         .hero {
-            padding: 96px 0 80px;
+            padding: 100px 0 80px;
         }
 
         .hero h1 {
-            font-size: clamp(2.25rem, 5vw, 3.25rem);
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: -0.03em;
-            margin-bottom: 24px;
+            font-size: clamp(2.5rem, 6vw, 3.75rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.035em;
+            margin-bottom: 28px;
             color: var(--text);
         }
 
+        .hero h1 .highlight {
+            color: var(--accent-light);
+        }
+
         .hero p {
-            font-size: 1.125rem;
+            font-size: 1.1875rem;
             color: var(--text-secondary);
-            max-width: 540px;
+            max-width: 560px;
             line-height: 1.7;
+        }
+
+        /* Accent bar */
+        .accent-bar {
+            width: 48px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+            margin-bottom: 28px;
         }
 
         /* Sections */
         section {
-            padding: 64px 0;
+            padding: 72px 0;
         }
 
         section + section {
@@ -102,17 +122,29 @@
 
         .section-label {
             font-size: 0.75rem;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
+            letter-spacing: 0.1em;
+            color: var(--accent-light);
+            margin-bottom: 28px;
+        }
+
+        .section-heading {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            color: var(--text);
         }
 
         .section-text {
             font-size: 1.0625rem;
             color: var(--text-secondary);
-            line-height: 1.75;
+            line-height: 1.8;
+        }
+
+        .section-text + .section-text {
+            margin-top: 16px;
         }
 
         /* Services */
@@ -124,23 +156,67 @@
         .service-item {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 24px;
-            transition: border-color 0.15s;
+            border-left: 3px solid var(--accent);
+            border-radius: 6px;
+            padding: 28px;
+            transition: border-color 0.15s, background 0.15s;
         }
 
         .service-item:hover {
-            border-color: #d6d3d1;
+            border-color: #333;
+            border-left-color: var(--accent-light);
+            background: #1a1a1a;
         }
 
         .service-item h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
+            font-size: 1.0625rem;
+            font-weight: 700;
+            margin-bottom: 10px;
             color: var(--text);
         }
 
         .service-item p {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Principles */
+        .principles {
+            display: grid;
+            gap: 32px;
+            margin-top: 8px;
+        }
+
+        .principle {
+            display: grid;
+            grid-template-columns: 48px 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+
+        .principle-number {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.125rem;
+            font-weight: 800;
+            color: var(--bg);
+            background: var(--accent);
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .principle h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+
+        .principle p {
             font-size: 0.9375rem;
             color: var(--text-secondary);
             line-height: 1.65;
@@ -148,20 +224,26 @@
 
         /* Contact */
         .contact-section {
-            padding: 64px 0 96px;
+            padding: 72px 0 100px;
         }
 
         .contact-link {
             display: inline-block;
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--accent);
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--accent-light);
             text-decoration: none;
             transition: color 0.15s;
         }
 
         .contact-link:hover {
             color: var(--accent-hover);
+        }
+
+        .contact-note {
+            margin-top: 12px;
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
         }
 
         /* Footer */
@@ -172,13 +254,17 @@
 
         footer p {
             font-size: 0.8125rem;
-            color: #a8a29e;
+            color: #525252;
         }
 
         /* Responsive */
         @media (min-width: 640px) {
             .container {
-                padding: 0 32px;
+                padding: 0 40px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
     </style>
@@ -193,32 +279,69 @@
 
     <div class="container">
         <div class="hero">
-            <h1>We build AI systems that run your operations.</h1>
-            <p>Woolst designs and deploys autonomous AI agents for enterprise workflows. We handle the complexity so your teams can focus on decisions that matter.</p>
+            <h1>Your people are your advantage. <span class="highlight">AI should sharpen it.</span></h1>
+            <p>Woolst helps organizations adopt AI the right way: augmenting your workforce, not replacing it. We teach teams to work alongside AI tools with confidence, judgment, and clear purpose.</p>
         </div>
 
         <section>
             <div class="section-label">What we do</div>
             <div class="services-grid">
                 <div class="service-item">
-                    <h3>AI Agent Development</h3>
-                    <p>Custom autonomous agents that handle operations, surface insights, and execute multi-step processes without manual intervention.</p>
+                    <h3>AI Literacy Programs</h3>
+                    <p>Hands-on training that gives your teams real fluency with AI tools. We cut through the hype so people understand what AI can and cannot do, and where it fits in their work.</p>
                 </div>
                 <div class="service-item">
-                    <h3>Workflow Automation</h3>
-                    <p>End-to-end automation that connects to your existing stack. We integrate, not replace, reducing manual work across your org.</p>
+                    <h3>Tool Selection & Evaluation</h3>
+                    <p>There are thousands of AI products. Most aren't right for you. We assess your workflows and recommend the tools that actually solve problems your people face.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Human-in-the-Loop Design</h3>
+                    <p>We design workflows where AI handles the heavy lifting and humans make the calls. The goal: better decisions, faster, with accountability intact.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Workforce Transition Strategy</h3>
+                    <p>Moving to AI-assisted work is a people problem, not a tech problem. We help leadership plan transitions that build trust and bring teams along.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-label">Our approach</div>
+            <div class="principles">
+                <div class="principle">
+                    <div class="principle-number">1</div>
+                    <div>
+                        <h3>People first, tools second</h3>
+                        <p>AI that sidelines your workforce is a liability. We start with how your teams actually work, then find where AI creates genuine leverage.</p>
+                    </div>
+                </div>
+                <div class="principle">
+                    <div class="principle-number">2</div>
+                    <div>
+                        <h3>Judgment over automation</h3>
+                        <p>The hardest parts of your business require human judgment. We focus AI on the repetitive and routine so your people can focus on what matters.</p>
+                    </div>
+                </div>
+                <div class="principle">
+                    <div class="principle-number">3</div>
+                    <div>
+                        <h3>No vendor lock-in, no hype</h3>
+                        <p>We're tool-agnostic. Our recommendations are based on what works for your organization, not what's trending or who's paying referral fees.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section>
             <div class="section-label">About</div>
-            <p class="section-text">We work with large organizations to identify high-leverage automation opportunities and ship production AI systems. Our focus is practical: agents that work reliably at scale, integrated into the tools your teams already use.</p>
+            <p class="section-text">Woolst is an AI advocacy consultancy. We work with organizations navigating the shift to AI-assisted work, helping them make smart decisions about tools, training, and workflow design.</p>
+            <p class="section-text">Our focus is practical: we believe AI works best when it amplifies human capability rather than replacing it. Every engagement starts with your people and ends with them working better.</p>
         </section>
 
         <section class="contact-section">
             <div class="section-label">Contact</div>
             <a href="#" onclick="window.location.href='mailto:'+atob('aW5mb0B3b29sc3QuY29t');return false" class="contact-link">info@woolst.com</a>
+            <p class="contact-note">Let's talk about how AI fits into your organization.</p>
         </section>
     </div>
 
